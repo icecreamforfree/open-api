@@ -1,0 +1,584 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Robotcone Admin API",
+    "version": "1.0.0",
+    "title": "Robotcone API",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "basePath": "/v2",
+  "tags": [
+    {
+      "name": "product",
+      "description": "Everything about products"
+    },
+    {
+      "name": "incentive",
+      "description": "Everything about incentive"
+    },
+    {
+      "name": "reviewQuestion",
+      "description": "Operations about review questions"
+    },
+    {
+      "name": "userQuestion",
+      "description": "Operations about user information questions"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/product": {
+      "post": {
+        "tags": [
+          "product"
+        ],
+        "summary": "Add a new product to database",
+        "description": "",
+        "operationId": "addProduct",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Product object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "product"
+        ],
+        "summary": "Update an existing product",
+        "description": "",
+        "operationId": "updateProduct",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Product object that needs to be added to database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Product not found"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "product"
+        ],
+        "summary": "Get products information",
+        "description": "",
+        "operationId": "getProduct",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "404": {
+            "description": "404 Not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "product"
+        ],
+        "summary": "Remove existing product",
+        "description": "",
+        "operationId": "removeProduct",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "productID",
+            "in": "query",
+            "description": "Product id that is desired to remove",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "404 Not Found"
+          }
+        }
+      }
+    },
+    "/incentive": {
+      "post": {
+        "tags": [
+          "incentive"
+        ],
+        "summary": "Add a new incentive",
+        "description": "",
+        "operationId": "addIncentive",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Incentive object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Incentive"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "incentive"
+        ],
+        "summary": "Update an existing incentive",
+        "description": "",
+        "operationId": "updateIncentive",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Incentive object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Incentive"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Product not found"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "incentive"
+        ],
+        "summary": "Get incentive information",
+        "description": "",
+        "operationId": "getIncentive",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "404": {
+            "description": "404 Not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "incentive"
+        ],
+        "summary": "Remove existing incentive",
+        "description": "",
+        "operationId": "removeIncentive",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "incentiveID",
+            "in": "query",
+            "description": "Product id that is desired to remove",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "404 Not Found"
+          }
+        }
+      }
+    },
+    "/reviewQuestion": {
+      "post": {
+        "tags": [
+          "reviewQuestion"
+        ],
+        "summary": "Add a new review question",
+        "description": "",
+        "operationId": "addReviewQuestion",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Review Question object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ReviewQuestion"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "reviewQuestion"
+        ],
+        "summary": "Update an existing review question",
+        "description": "",
+        "operationId": "updateReviewQuestion",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Review question object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ReviewQuestion"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Product not found"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "reviewQuestion"
+        ],
+        "summary": "Get review question information",
+        "description": "",
+        "operationId": "getReviewQuestion",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "404": {
+            "description": "404 Not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "reviewQuestion"
+        ],
+        "summary": "Remove existing review question",
+        "description": "",
+        "operationId": "removeReviewQuestion",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "reviewQuestionID",
+            "in": "query",
+            "description": "Review question id that is desired to remove",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "404 Not Found"
+          }
+        }
+      }
+    },
+    "/userQuestion": {
+      "post": {
+        "tags": [
+          "userQuestion"
+        ],
+        "summary": "Add a new user info question",
+        "description": "",
+        "operationId": "addUserQuestion",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User info question object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserQuestion"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "userQuestion"
+        ],
+        "summary": "Update an existing user info question",
+        "description": "",
+        "operationId": "updateUserQuestion",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User info question object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserQuestion"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Question not found"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "userQuestion"
+        ],
+        "summary": "Get user info question information",
+        "description": "",
+        "operationId": "getUserQuestion",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "404": {
+            "description": "404 Not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "userQuestion"
+        ],
+        "summary": "Remove existing user info question",
+        "description": "",
+        "operationId": "removeUserQuestion",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userQuestionID",
+            "in": "query",
+            "description": "User info question id that is desired to remove",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "404 Not Found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Product": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "brand": {
+          "type": "string",
+          "example": "Maybelline"
+        },
+        "name": {
+          "type": "string",
+          "example": "Maybelline foundation FIT Me"
+        },
+        "price": {
+          "type": "number",
+          "format": "float"
+        },
+        "salesURL": {
+          "type": "string",
+          "example": "https://well.ca/products/maybelline-dream-smooth-mousse_28944.html"
+        }
+      },
+      "xml": {
+        "name": "Product"
+      }
+    },
+    "Incentive": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "startDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "productId": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Incentive"
+      }
+    },
+    "ReviewQuestion": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "question": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "reviewQuestion"
+      }
+    },
+    "UserQuestion": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "question": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "userQuestion"
+      }
+    }
+  }
+}
